@@ -15,13 +15,13 @@ que haces en el editor.
   (o a todas; eliges de una lista)
 
   Con ✨ cada mascota hace lo suyo: Gold Ship corre, Tachyon prepara pócimas, Megumin lanza
-  ¡EXPLOSIÓN!, las cantantes cantan y Clawd baila.
+  ¡EXPLOSIÓN!, Mudkip usa Pistola Agua, las cantantes cantan y Clawd baila.
 
 ### Compañeros
 
 Con ➕ puedes invocar a otro **Clawd** (8 colores), a **Hatsune Miku** 🎤, a **Kasane Teto** 🥖, a
 **Defoko** (Uta Utane, la voz por defecto de UTAU) 🍙, a las umamusume **Gold Ship** ⚓ y
-**Agnes Tachyon** 🧪 (con orejas y cola de caballo) o a **Megumin** 💥 (KonoSuba).
+**Agnes Tachyon** 🧪 (con orejas y cola de caballo), a **Megumin** 💥 (KonoSuba) o a **Mudkip** 💧.
 Todas cantan (Miku gira su puerro, Teto su baguette, Gold Ship usa micrófono, Defoko su auricular y Tachyon su
 frasco; Defoko suelta "あ" en vez de notas), y cada uno come lo suyo: 🍪 galletas, 🥬 puerros,
 🥖 baguettes, 🍙 onigiri, 🍜 yakisoba y 🥕 zanahorias.
@@ -30,6 +30,7 @@ frasco; Defoko suelta "あ" en vez de notas), y cada uno come lo suyo: 🍪 gall
 - **Agnes Tachyon** a veces se sienta a preparar pócimas (que salen bien... o explotan 💥).
 - **Megumin** recita su conjuro y lanza **¡EXPLOSIÓN!** (las mascotas cercanas salen volando); luego
   se desmaya sin maná un rato. Come 🧪 pociones de maná.
+- **Mudkip** lanza **Pistola Agua** 💦 hacia delante y moja a quien esté enfrente. Come 🫐 bayas Aranja.
 
 Cuando hay dos o más, juegan entre ellos por su cuenta (o al pulsar 🤝):
 
@@ -86,7 +87,7 @@ Estructura:
 - `media/pet.js`: motor de la mascota (sprites en pixel art, estados, física, partículas).
 - `media/pet.css`: estilos de la ventana.
 
-*Proyecto de fans, no oficial ni afiliado a Anthropic, Crypton Future Media, TWINDRILL, Cygames ni Kadokawa.
-Hatsune Miku, Kasane Teto, Defoko (Uta Utane), Gold Ship, Agnes Tachyon (Uma Musume Pretty Derby) y Megumin (KonoSuba) pertenecen a sus
+*Proyecto de fans, no oficial ni afiliado a Anthropic, Crypton Future Media, TWINDRILL, Cygames, Kadokawa, Nintendo, Game Freak ni The Pokémon Company.
+Hatsune Miku, Kasane Teto, Defoko (Uta Utane), Gold Ship, Agnes Tachyon (Uma Musume Pretty Derby), Megumin (KonoSuba) y Mudkip (Pokémon) pertenecen a sus
 respectivos dueños; los sprites son fan art propio. Antes de
 publicar la extensión en el Marketplace, revisa las licencias de uso de esos personajes.*

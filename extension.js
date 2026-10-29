@@ -102,7 +102,7 @@ function readConfig() {
   };
 }
 
-const SPECIES_ICONS = { clawd: '🦀', miku: '🎤', teto: '🥖', goldship: '⚓', tachyon: '🧪', defoko: '🍙', megumin: '💥' };
+const SPECIES_ICONS = { clawd: '🦀', miku: '🎤', teto: '🥖', goldship: '⚓', tachyon: '🧪', defoko: '🍙', megumin: '💥', mudkip: '💧' };
 
 async function pickPetToRemove(pets, selectedId) {
   if (!pets.length) {
@@ -170,6 +170,7 @@ function activate(context) {
         { label: '🧪 Agnes Tachyon', description: 'prepara pócimas y experimenta con los demás', value: 'tachyon', name: 'Tachyon' },
         { label: '🍙 Defoko (Uta Utane)', description: 'la voz por defecto de UTAU: canta "あ"', value: 'defoko', name: 'Defoko' },
         { label: '💥 Megumin', description: 'archimaga carmesí: ¡EXPLOSIÓN!', value: 'megumin', name: 'Megumin' },
+        { label: '💧 Mudkip', description: 'pokémon de agua: ¡Pistola Agua!', value: 'mudkip', name: 'Mudkip' },
       ];
       const character = await vscode.window.showQuickPick(characters, { placeHolder: '¿A quién quieres invocar?' });
       if (!character) return;
