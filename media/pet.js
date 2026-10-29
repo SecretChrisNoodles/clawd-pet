@@ -2234,10 +2234,12 @@
       case 'code':
       case 'dance':
       case 'wave': return forEachPet((p) => p.grounded() && p.setState(msg.action));
-      case 'special':
-        return forEachPet((p) => {
-          if (p.grounded() && p.state !== specialOf(p)) p.setState(specialOf(p));
-        });
+      // Solo la mascota seleccionada (la última en la que se hizo clic), para no saturar la pantalla
+      case 'special': {
+        const p = selected && pets.includes(selected) ? selected : pets[0];
+        if (p && p.grounded() && p.state !== 'drag' && p.state !== specialOf(p)) p.setState(specialOf(p));
+        return;
+      }
       case 'spawn': return addPet({ species: msg.species, color: msg.color, name: msg.name });
       case 'remove': return msg.id != null ? removePet(msg.id) : requestRemove();
     }

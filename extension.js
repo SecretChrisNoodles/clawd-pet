@@ -79,7 +79,7 @@ class ClawdViewProvider {
       <button data-action="code" title="Programar">💻</button>
       <button data-action="dance" title="Bailar">🎵</button>
       <button data-action="wave" title="Saludar">👋</button>
-      <button data-action="special" title="Animación especial (cada mascota hace la suya)">✨</button>
+      <button data-action="special" title="Animación especial de la mascota seleccionada (haz clic en una para elegirla)">✨</button>
       <button data-action="social" title="Jugar juntos">🤝</button>
       <button data-action="spawn" title="Invocar un compañero">➕</button>
       <button data-action="remove" title="Despedir a una mascota">🗑️</button>

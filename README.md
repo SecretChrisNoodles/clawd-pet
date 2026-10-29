@@ -14,8 +14,9 @@ que haces en el editor.
   ✨ animación especial · 🤝 jugar juntos · ➕ invocar compañero · 🗑️ despedir a una mascota
   (o a todas; eliges de una lista)
 
-  Con ✨ cada mascota hace lo suyo: Gold Ship corre, Tachyon prepara pócimas, Megumin lanza
-  ¡EXPLOSIÓN!, Mudkip usa Pistola Agua, las cantantes cantan y Clawd baila.
+  ✨ activa la animación especial de la **mascota seleccionada** (haz clic en una para elegirla; su
+  nombre sale arriba): Gold Ship corre, Tachyon prepara pócimas, Megumin lanza ¡EXPLOSIÓN!, Mudkip
+  usa Pistola Agua, las cantantes cantan y Clawd baila.
 
 ### Compañeros
 
