@@ -1,92 +1,104 @@
 # Clawd Pet 🦀
 
-Una mascota virtual para VS Code inspirada en **Clawd**, la mascota de Claude Code. Vive en una
-ventanita del Explorador, camina, duerme, come, programa, baila, juega a la pelota y reacciona a lo
-que haces en el editor.
+**Una mascota virtual en pixel art que vive en tu VS Code.** Camina, come, duerme, baila, programa
+contigo y reacciona a lo que haces en el editor. Invítale amigos y los verás conversar, jugar,
+cantar... y repartir uno que otro dropkick.
+
+> Proyecto de fans, gratuito y sin fines de lucro. No es oficial ni está afiliado a ninguna de las
+> marcas o personajes que aparecen (ver [Créditos](#créditos)).
+
+## Primeros pasos
+
+1. Instala la extensión.
+2. Abre el **Explorador** (`Ctrl+Shift+E`): abajo aparece la ventana **Clawd**.
+3. ¡Listo! Clawd cae del cielo y empieza a hacer lo suyo.
+
+¿Te queda chica la ventana? Arrástrala al panel inferior o a la barra lateral secundaria y cámbiale
+el tamaño.
 
 ## Cómo jugar
 
-- **Clic sobre Clawd**: lo acaricias (corazones ❤️).
-- **Arrastrar a Clawd**: lo levantas y, al soltarlo, lo lanzas por los aires.
-- **Clic en el suelo**: lanzas una pelota ⚽ y la persigue.
-- **Botones** (arriba de la ventana o en la barra del panel):
-  🍪 comer · ⚽ jugar · 💤 dormir · 💻 programar · 🎵 bailar · 👋 saludar ·
-  ✨ animación especial · 🤝 jugar juntos · ➕ invocar compañero · 🗑️ despedir a una mascota
-  (o a todas; eliges de una lista)
+| Acción                | Qué pasa                                         |
+| --------------------- | ------------------------------------------------ |
+| Clic sobre la mascota | La acaricias ❤️                                  |
+| Arrastrar y soltar    | La levantas y la lanzas por los aires            |
+| Clic en el suelo      | Lanzas una pelota ⚽ y todos la persiguen         |
 
-  Con ✨ cada mascota hace lo suyo: Gold Ship corre, Tachyon prepara pócimas, Megumin lanza
-  ¡EXPLOSIÓN!, las cantantes cantan y Clawd baila.
+La barra de la ventana tiene botones para todo lo demás:
 
-### Compañeros
+🍪 comer · ⚽ jugar · 💤 dormir · 💻 programar · 🎵 bailar · 👋 saludar · ✨ animación especial ·
+🤝 jugar juntos · ➕ invocar compañero · 🗑️ despedir
 
-Con ➕ puedes invocar a otro **Clawd** (8 colores), a **Hatsune Miku** 🎤, a **Kasane Teto** 🥖, a
-**Defoko** (Uta Utane, la voz por defecto de UTAU) 🍙, a las umamusume **Gold Ship** ⚓ y
-**Agnes Tachyon** 🧪 (con orejas y cola de caballo) o a **Megumin** 💥 (KonoSuba).
-Todas cantan (Miku gira su puerro, Teto su baguette, Gold Ship usa micrófono, Defoko su auricular y Tachyon su
-frasco; Defoko suelta "あ" en vez de notas), y cada uno come lo suyo: 🍪 galletas, 🥬 puerros,
-🥖 baguettes, 🍙 onigiri, 🍜 yakisoba y 🥕 zanahorias.
+Cada mascota tiene **comida**, **energía** y **felicidad**. Si tiene sueño se duerme sola y si tiene
+hambre te lo pide. Su estado se guarda entre sesiones, así que te estarán esperando.
 
-- **Gold Ship** a veces cruza la pantalla corriendo a toda velocidad 💨.
-- **Agnes Tachyon** a veces se sienta a preparar pócimas (que salen bien... o explotan 💥).
-- **Megumin** recita su conjuro y lanza **¡EXPLOSIÓN!** (las mascotas cercanas salen volando); luego
-  se desmaya sin maná un rato. Come 🧪 pociones de maná.
+## Personajes
 
-Cuando hay dos o más, juegan entre ellos por su cuenta (o al pulsar 🤝):
+Con ➕ invocas compañeros. Cada uno tiene su comida, sus frases y su animación especial (✨):
 
-| Interacción      | Qué pasa                                                          |
-| ---------------- | ----------------------------------------------------------------- |
-| Conversación     | Diálogos propios para cada pareja (Clawd y Miku, Teto y Miku...)  |
-| Choca esos cinco | Saltan juntos y chocan las manos                                  |
-| Abrazo           | Corazones y mejillas sonrojadas                                   |
-| Pillarse         | Uno persigue al otro; al pillarlo cambian los papeles             |
-| Paseo            | Miku o Teto se suben al lomo de Clawd y dan una vuelta            |
-| Concierto        | Las cantantes cantan al centro y los demás bailan alrededor       |
-| Dropkick         | Gold Ship toma carrerilla y manda a volar a su compañero 🦵       |
-| Experimento      | Tachyon le da una pócima a otro, que brilla en arcoíris un rato   |
+| Personaje                   | Come          | Especial                                                 |
+| --------------------------- | ------------- | -------------------------------------------------------- |
+| 🦀 **Clawd** (8 colores)    | 🍪 galletas    | Baila y programa contigo                                 |
+| 🎤 **Hatsune Miku**         | 🥬 puerros     | Canta girando su puerro                                  |
+| 🥖 **Kasane Teto**          | 🥖 baguettes   | Canta girando su baguette                                |
+| 🍙 **Defoko** (Uta Utane)   | 🍙 onigiri     | Canta por su auricular... solo "あ"                       |
+| ⚓ **Gold Ship**            | 🍜 yakisoba    | Cruza la pantalla a toda velocidad 💨                    |
+| 🧪 **Agnes Tachyon**        | 🥕 zanahorias  | Prepara pócimas que salen bien... o explotan 💥           |
+| 💥 **Megumin**              | 🧪 maná        | Recita su conjuro, lanza **¡EXPLOSIÓN!** y se desmaya     |
 
-Cada mascota tiene **comida**, **energía** y **felicidad**. Si tiene sueño se dormirá solo, si tiene
-hambre te lo dirá. El estado se guarda entre sesiones.
+## Juntos es mejor
 
-### Reacciones al editor
+Con dos o más mascotas, juegan entre ellas por su cuenta (o cuando pulsas 🤝):
 
-| Lo que haces              | Lo que hace Clawd                 |
-| ------------------------- | --------------------------------- |
-| Guardas un archivo        | Salta de alegría                  |
-| Aparece un error nuevo    | Se pone a pensar 🤔               |
-| Quedan 0 errores          | Todos bailan 🎉                   |
-| Escribes código           | Saca su laptop y programa contigo |
+| Interacción      | Qué pasa                                                         |
+| ---------------- | ---------------------------------------------------------------- |
+| Conversación     | Diálogos propios para cada pareja de personajes                  |
+| Choca esos cinco | Saltan juntos y chocan las manos ✋                              |
+| Abrazo           | Corazones y mejillas sonrojadas 💕                               |
+| Pillarse         | Uno persigue al otro; al pillarlo cambian los papeles            |
+| Paseo            | Alguien se sube al lomo de Clawd y dan una vuelta 🦀             |
+| Concierto        | Las cantantes al centro y los demás bailando alrededor 🎶        |
+| Dropkick         | Gold Ship toma carrerilla y manda a volar a su compañero 🦵      |
+| Experimento      | Tachyon le da una pócima a otro, que brilla en arcoíris ✨       |
 
-## Comandos (Ctrl+Shift+P → "Clawd")
+## Reacciona a tu código
 
-Dar una galleta, Lanzar la pelota, Invocar compañero, Mandar a dormir, Ponerse a programar,
-Bailar, Saludar, Animación especial, Despedir a una mascota, Cambiar fondo.
+| Lo que haces           | Lo que hacen                       |
+| ---------------------- | ---------------------------------- |
+| Guardas un archivo     | Saltan de alegría 💾               |
+| Aparece un error nuevo | Se ponen a pensar 🤔               |
+| Quedan 0 errores       | ¡Fiesta! Todos bailan y cantan 🎉  |
+| Escribes código        | Sacan su laptop y programan contigo |
+
+## Comandos
+
+Abre la paleta (`Ctrl+Shift+P`) y escribe **Clawd**: dar una galleta, lanzar la pelota, invocar
+compañero, jugar juntos, animación especial, mandar a dormir, ponerse a programar, bailar, saludar,
+despedir a una mascota y cambiar fondo.
 
 ## Configuración
 
-| Opción                    | Valores                                           |
-| ------------------------- | ------------------------------------------------- |
-| `clawdPet.size`           | `small`, `medium`, `large`                        |
-| `clawdPet.background`     | `none`, `night`, `beach`, `grass`, `terminal`     |
-| `clawdPet.showToolbar`    | mostrar barra de estado y botones                 |
-| `clawdPet.speechBubbles`  | globos de texto                                   |
-| `clawdPet.reactToEditor`  | reaccionar a guardados, errores y escritura       |
+| Opción                   | Descripción                                    | Valores                                          |
+| ------------------------ | ---------------------------------------------- | ------------------------------------------------ |
+| `clawdPet.size`          | Tamaño de las mascotas                         | `small`, `medium`, `large`                       |
+| `clawdPet.background`    | Fondo de la ventana                            | `none`, `night`, `beach`, `grass`, `terminal`    |
+| `clawdPet.showToolbar`   | Mostrar la barra de estado y botones           | `true` / `false`                                 |
+| `clawdPet.speechBubbles` | Globos de texto                                | `true` / `false`                                 |
+| `clawdPet.reactToEditor` | Reaccionar a guardados, errores y escritura    | `true` / `false`                                 |
 
-> La ventana "Clawd" aparece en el Explorador. Puedes arrastrarla a otro lugar (por ejemplo al panel
-> inferior o a la barra lateral secundaria) y cambiar su tamaño.
+## Ideas y errores
 
-## Desarrollo
+¿Encontraste un bug o quieres proponer un personaje? Abre un issue o un pull request en
+[GitHub](https://github.com/SecretChrisNoodles/clawd-pet).
 
-- **Probar sin instalar**: abre esta carpeta en VS Code y pulsa **F5**.
-- **Empaquetar**: `powershell -ExecutionPolicy Bypass -File build-vsix.ps1`
-- **Instalar**: `code --install-extension clawd-pet-0.1.0.vsix`
+## Créditos
 
-Estructura:
+Hecho con cariño por ChrisNoodles y amigos. Todos los sprites son fan art propio en pixel art.
 
-- `extension.js`: registra la vista, comandos y eventos del editor.
-- `media/pet.js`: motor de la mascota (sprites en pixel art, estados, física, partículas).
-- `media/pet.css`: estilos de la ventana.
+Proyecto de fans no oficial, sin fines de lucro, sin relación con Anthropic, Crypton Future Media,
+TWINDRILL, Cygames ni Kadokawa. Clawd y Claude pertenecen a Anthropic; Hatsune Miku a Crypton Future
+Media; Kasane Teto a TWINDRILL; Defoko (Uta Utane) a UTAU; Gold Ship y Agnes Tachyon (Uma Musume
+Pretty Derby) a Cygames; Megumin (KonoSuba) a Kadokawa. Si eres titular de alguno de estos derechos y
+quieres que se retire un personaje, abre un issue y lo atenderemos.
 
-*Proyecto de fans, no oficial ni afiliado a Anthropic, Crypton Future Media, TWINDRILL, Cygames ni Kadokawa.
-Hatsune Miku, Kasane Teto, Defoko (Uta Utane), Gold Ship, Agnes Tachyon (Uma Musume Pretty Derby) y Megumin (KonoSuba) pertenecen a sus
-respectivos dueños; los sprites son fan art propio. Antes de
-publicar la extensión en el Marketplace, revisa las licencias de uso de esos personajes.*
+El código está bajo licencia [MIT](LICENSE).

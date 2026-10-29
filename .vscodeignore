@@ -1,0 +1,6 @@
+.vscode/**
+.git/**
+.gitignore
+*.vsix
+build-vsix.ps1
+instalar.bat

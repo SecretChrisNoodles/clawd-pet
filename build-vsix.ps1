@@ -22,6 +22,7 @@ $manifest = @"
     <DisplayName>$($pkg.displayName)</DisplayName>
     <Description xml:space="preserve">$($pkg.description)</Description>
     <Categories>Other</Categories>
+    <Icon>extension/$($pkg.icon)</Icon>
     <Properties>
       <Property Id="Microsoft.VisualStudio.Code.Engine" Value="$($pkg.engines.vscode)" />
     </Properties>
@@ -33,6 +34,7 @@ $manifest = @"
   <Assets>
     <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
     <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true" />
+    <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/$($pkg.icon)" Addressable="true" />
   </Assets>
 </PackageManifest>
 "@
@@ -43,6 +45,7 @@ $types = @"
   <Default Extension=".js" ContentType="application/javascript" />
   <Default Extension=".css" ContentType="text/css" />
   <Default Extension=".md" ContentType="text/markdown" />
+  <Default Extension=".png" ContentType="image/png" />
   <Default Extension=".vsixmanifest" ContentType="text/xml" />
   <Default Extension=".xml" ContentType="text/xml" />
 </Types>
