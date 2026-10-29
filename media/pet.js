@@ -88,6 +88,15 @@
         witchHat: '#4A3530', witchBand: '#E8902A', witchBuckle: '#D63A3A', staff: '#6B4A2B',
       },
     },
+    // Pokémon de agua en cuatro patas; su solo es Pistola Agua
+    mudkip: {
+      w: 16, h: 12, legs: 2, unit: () => S, draw: drawMudkip, name: 'Mudkip',
+      food: 'berry', solo: 'watergun',
+      look: {
+        body: '#5FA8E8', shade: '#3F86C8', light: '#DCE8F7', cheek: '#F2953A', cheekDark: '#D9772A',
+        fin: '#EAF0FA', finShade: '#B8CDEB',
+      },
+    },
   };
 
   const PHRASES = {
@@ -186,6 +195,20 @@
       drained: ['...no me queda maná 😵', '¿Alguien me carga? 🥺', 'No puedo moverme...'],
       recovered: ['¡Valió la pena! 💥', '¡Qué explosión tan perfecta!', '¿Le pongo nota? ¡100 puntos!'],
     },
+    mudkip: {
+      idle: [
+        '¡Mud! ¡Mudkip! 💧', 'So I herd u liek Mudkips', '*mueve la aleta*', 'Kip kip~',
+        'Mi aleta es un radar 📡', '¡Me encanta el barro!',
+      ],
+      hungry: ['¿Hay bayas? 🫐', 'Mud... hambre...'],
+      tired: ['Mud... zzz', '*se acurruca*'],
+      sad: ['Kip... 🥺', '¿Jugamos en el agua?'],
+      yum: ['¡Baya Aranja! 🫐', '¡Mudkip feliz! 💧'],
+      hello: ['¡Mudkip! 💧', '¡Kip kip! 👋'],
+      pet: ['¡Mud mud! 💕', '*agita la cola*', '¡Kip! ♥'],
+      hug: ['¡Abrazo mojado! 💧'],
+      watergun: ['¡Pistola Agua! 💦', '¡Mudkiiiip! 💦'],
+    },
   };
 
   // Diálogos: [especie que habla, texto]. En "same" se usa el índice del participante.
@@ -282,6 +305,17 @@
       [['defoko', 'あ'], ['megumin', '¡EXPLOSIÓN!'], ['defoko', 'あ... 😨']],
       [['megumin', '¿Solo sabes una palabra?'], ['defoko', 'あ'], ['megumin', 'Yo solo sé un hechizo. Te entiendo']],
     ],
+    'clawd+mudkip': [
+      [['mudkip', '¡Mudkip!'], ['clawd', '¿Eres un pez?'], ['mudkip', '¡Kip! 😤']],
+      [['clawd', 'So I herd u liek Mudkips'], ['mudkip', '¡¿Quién te dijo?! 💦'], ['clawd', 'Internet, 2006']],
+    ],
+    'megumin+mudkip': [
+      [['megumin', '¡Un renacuajo! ¿Se come? 🤤'], ['mudkip', '¡MUD! 💦'], ['megumin', '...era broma']],
+      [['mudkip', '*apunta su Pistola Agua*'], ['megumin', '¡No apagues mi explosión!'], ['mudkip', 'Kip kip 😏']],
+    ],
+    'miku+mudkip': [
+      [['miku', '¡Qué lindo! ¿Cantas?'], ['mudkip', 'Mud mud~ ♪'], ['miku', '¡Dueto acuático! 💙']],
+    ],
     same: [
       [[0, '¿Viste ese bug?'], [1, 'Sí... da miedo 😨'], [0, '¡Arreglémoslo juntos!']],
       [[0, '¡Hola, gemelo!'], [1, '¡Hola, gemelo!'], [0, '...']],
@@ -303,6 +337,7 @@
     yakisoba: { rows: ['..nnnnn..', '.nNnnrNn.', 'nnnNnnnNn', 'ppppppppp', '.ppppppp.'], colors: { n: '#C8843A', N: '#8A5424', r: '#E5534B', p: '#EDEDED' } },
     carrot: { rows: ['g.g.......', '.gooooooo.', 'gooOoooOoo', '.ooooooo..'], colors: { o: '#F28C28', O: '#C96A12', g: '#5FB84A' } },
     onigiri: { rows: ['...ww...', '..wwww..', '.wwwwww.', 'wwnnnnww', 'wwnnnnww'], colors: { w: '#F5F5F0', n: '#2E3B2E' } },
+    berry: { rows: ['..g..', '.bbb.', 'bbBbb', 'bbbbb', '.bbb.'], colors: { b: '#3F7FD9', B: '#9CC6F5', g: '#4E9A3A' } },
     potion: { rows: ['.cc.', '.gg.', 'bbbb', 'bBbb', 'bbbb', '.bb.'], colors: { b: '#5B8DEF', B: '#A5E4FF', g: '#C9D6E3', c: '#8B5A2B' } },
   };
   const HEART = ['.x.x.', 'xxxxx', '.xxx.', '..x..'];
@@ -995,6 +1030,35 @@
       },
     },
 
+    // Mudkip: Pistola Agua, un chorro en arco que moja a quien esté delante
+    watergun: {
+      enter(p) {
+        p.data.d = 0;
+        p.say(phr(p, 'watergun'), 2);
+      },
+      update(p, dt) {
+        p.pose.eyes = 'happy';
+        p.pose.mouth = true;
+        p.pose.look = 1;
+        if ((p.data.d -= dt) <= 0) {
+          p.data.d = 0.05;
+          spawn('spark', p.x + p.dir * p.halfW(), p.y - p.height() * 0.5, {
+            vx: p.dir * rand(140, 200), vy: -rand(60, 120), life: rand(0.8, 1.2), color: pick(['#7DD3FC', '#5B8DEF', '#FFFFFF']),
+          });
+        }
+        if (p.t > 2.5) {
+          for (const q of pets) {
+            const d = (q.x - p.x) * p.dir;
+            if (q === p || d <= 0 || d > 130 || !q.free()) continue;
+            q.say(pick(['¡Me mojaste! 💦', '¡Agua fría! 🥶', '¡Oye! 💦']), 2);
+            q.setState('jump', { small: true });
+          }
+          p.boost('happy', 8);
+          p.setState('idle');
+        }
+      },
+    },
+
     // Controlado por una Interaction (ver más abajo)
     social: { update() {} },
   };
@@ -1518,6 +1582,80 @@
       px(eyes[1] + 1, 4, 1, 1, BLUSH);
     }
     if (po.mouth) px(6 + po.look, 5, 2, 1, eye);
+  }
+
+  // Mudkip de perfil mirando a la derecha: sprite de 16x12 unidades
+  function drawMudkip(p) {
+    const L = p.sp.look;
+    const po = p.pose;
+    const s = p.u();
+    const ox = Math.round(p.x - 8 * s);
+    const oy = Math.round(p.y - 12 * s + po.bob);
+    const flip = p.dir < 0;
+    const px = (x, y, w, h, c) => {
+      ctx.fillStyle = c;
+      const fx = flip ? 16 - x - w : x;
+      ctx.fillRect(ox + fx * s, oy + y * s, w * s, h * s);
+    };
+
+    if (po.legs !== 'sit') {
+      [4, 6, 9, 11].forEach((lx, i) => {
+        if (i === 3 && po.armF === 'up') return;
+        let h = 2;
+        if (po.legs === 1 && i % 2 === 0) h = 1;
+        if (po.legs === 2 && i % 2 === 1) h = 1;
+        px(lx, 10, 1, h, L.body);
+      });
+    }
+
+    // Aleta de la cola: sube y baja, más rápido cuando está feliz
+    const ty = Math.floor(p.anim * (po.eyes === 'happy' ? 6 : 1.5)) % 2 ? -1 : 0;
+    px(1, 4 + ty, 2, 1, L.fin);
+    px(0, 5 + ty, 3, 3, L.fin);
+    px(0, 7 + ty, 3, 1, L.finShade);
+    px(1, 8 + ty, 2, 1, L.finShade);
+
+    px(3, 6, 9, 4, L.body);
+    px(4, 9, 7, 1, L.light);
+    // Pata delantera levantada (saludar, chocar los cinco...)
+    if (po.armF === 'up') px(12, 8, 2, 1, L.body);
+
+    // Aleta de la cabeza
+    px(10, 0, 2, 4, L.body);
+    px(11, 1, 1, 3, L.shade);
+
+    px(8, 3, 6, 1, L.body);
+    px(7, 4, 8, 3, L.body);
+    px(8, 7, 7, 1, L.light);
+
+    // Branquias naranjas en forma de estrella (la del otro lado asoma por detrás)
+    px(6, 5, 1, 2, L.cheek);
+    px(13, 5, 2, 3, L.cheek);
+    px(15, 4, 1, 1, L.cheek);
+    px(15, 7, 1, 1, L.cheek);
+    px(14, 7, 1, 1, L.cheekDark);
+
+    const eyes = po.look ? [10, 13] : [9, 12];
+    eyes.forEach((ex, i) => {
+      switch (po.eyes) {
+        case 'closed':
+          px(ex - i, 5, 2, 1, EYE);
+          break;
+        case 'happy':
+          px(ex - 1, 5, 1, 1, EYE);
+          px(ex, 4, 1, 1, EYE);
+          px(ex + 1, 5, 1, 1, EYE);
+          break;
+        case 'big':
+          px(ex, 3, 1, 3, EYE);
+          break;
+        default:
+          px(ex, 4, 1, 2, EYE);
+      }
+    });
+
+    if (po.blush) px(eyes[0] - 1, 6, 1, 1, BLUSH);
+    if (po.mouth) px(10 + po.look, 6, 2, 1, EYE);
   }
 
   // Chibi de 18x19 unidades: coletas (Miku), taladros (Teto), umamusume con orejas y cola o bruja (Megumin)
@@ -2096,10 +2234,12 @@
       case 'code':
       case 'dance':
       case 'wave': return forEachPet((p) => p.grounded() && p.setState(msg.action));
-      case 'special':
-        return forEachPet((p) => {
-          if (p.grounded() && p.state !== specialOf(p)) p.setState(specialOf(p));
-        });
+      // Solo la mascota seleccionada (la última en la que se hizo clic), para no saturar la pantalla
+      case 'special': {
+        const p = selected && pets.includes(selected) ? selected : pets[0];
+        if (p && p.grounded() && p.state !== 'drag' && p.state !== specialOf(p)) p.setState(specialOf(p));
+        return;
+      }
       case 'spawn': return addPet({ species: msg.species, color: msg.color, name: msg.name });
       case 'remove': return msg.id != null ? removePet(msg.id) : requestRemove();
     }
@@ -2138,7 +2278,7 @@
     if (!p) { statsEl.innerHTML = ''; return; }
     const bar = (icon, v, cls, label) =>
       `<span class="stat" title="${label}: ${Math.round(v)}%">${icon}<span class="bar ${cls}${v < 25 ? ' low' : ''}"><div style="width:${v.toFixed(0)}%"></div></span></span>`;
-    const foodIcon = { cookie: '🍪', leek: '🥬', bread: '🥖', yakisoba: '🍜', carrot: '🥕', onigiri: '🍙', potion: '🧪' }[p.sp.food];
+    const foodIcon = { cookie: '🍪', leek: '🥬', bread: '🥖', yakisoba: '🍜', carrot: '🥕', onigiri: '🍙', potion: '🧪', berry: '🫐' }[p.sp.food];
     statsEl.innerHTML =
       `<span class="name" title="${esc(p.name)}">${esc(p.name)}</span>` +
       bar(foodIcon, p.hunger, 'hunger', 'Comida') +

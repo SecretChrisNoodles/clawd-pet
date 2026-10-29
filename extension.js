@@ -79,7 +79,7 @@ class ClawdViewProvider {
       <button data-action="code" title="Programar">💻</button>
       <button data-action="dance" title="Bailar">🎵</button>
       <button data-action="wave" title="Saludar">👋</button>
-      <button data-action="special" title="Animación especial (cada mascota hace la suya)">✨</button>
+      <button data-action="special" title="Animación especial de la mascota seleccionada (haz clic en una para elegirla)">✨</button>
       <button data-action="social" title="Jugar juntos">🤝</button>
       <button data-action="spawn" title="Invocar un compañero">➕</button>
       <button data-action="remove" title="Despedir a una mascota">🗑️</button>
@@ -102,7 +102,7 @@ function readConfig() {
   };
 }
 
-const SPECIES_ICONS = { clawd: '🦀', miku: '🎤', teto: '🥖', goldship: '⚓', tachyon: '🧪', defoko: '🍙', megumin: '💥' };
+const SPECIES_ICONS = { clawd: '🦀', miku: '🎤', teto: '🥖', goldship: '⚓', tachyon: '🧪', defoko: '🍙', megumin: '💥', mudkip: '💧' };
 
 async function pickPetToRemove(pets, selectedId) {
   if (!pets.length) {
@@ -170,6 +170,7 @@ function activate(context) {
         { label: '🧪 Agnes Tachyon', description: 'prepara pócimas y experimenta con los demás', value: 'tachyon', name: 'Tachyon' },
         { label: '🍙 Defoko (Uta Utane)', description: 'la voz por defecto de UTAU: canta "あ"', value: 'defoko', name: 'Defoko' },
         { label: '💥 Megumin', description: 'archimaga carmesí: ¡EXPLOSIÓN!', value: 'megumin', name: 'Megumin' },
+        { label: '💧 Mudkip', description: 'pokémon de agua: ¡Pistola Agua!', value: 'mudkip', name: 'Mudkip' },
       ];
       const character = await vscode.window.showQuickPick(characters, { placeHolder: '¿A quién quieres invocar?' });
       if (!character) return;
