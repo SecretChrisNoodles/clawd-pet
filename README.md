@@ -34,7 +34,8 @@ hambre te lo pide. Su estado se guarda entre sesiones, así que te estarán espe
 
 ## Personajes
 
-Con ➕ invocas compañeros. Cada uno tiene su comida, sus frases y su animación especial (✨):
+Con ➕ invocas compañeros. Cada uno tiene su comida, sus frases y su animación especial: haz clic en
+una mascota para seleccionarla (su nombre sale arriba) y pulsa ✨.
 
 | Personaje                   | Come          | Especial                                                 |
 | --------------------------- | ------------- | -------------------------------------------------------- |
@@ -45,6 +46,7 @@ Con ➕ invocas compañeros. Cada uno tiene su comida, sus frases y su animació
 | ⚓ **Gold Ship**            | 🍜 yakisoba    | Cruza la pantalla a toda velocidad 💨                    |
 | 🧪 **Agnes Tachyon**        | 🥕 zanahorias  | Prepara pócimas que salen bien... o explotan 💥           |
 | 💥 **Megumin**              | 🧪 maná        | Recita su conjuro, lanza **¡EXPLOSIÓN!** y se desmaya     |
+| 💧 **Mudkip**               | 🫐 bayas Aranja | Usa **Pistola Agua** 💦 y moja a quien tenga enfrente    |
 
 ## Juntos es mejor
 
@@ -96,9 +98,10 @@ despedir a una mascota y cambiar fondo.
 Hecho con cariño por ChrisNoodles y amigos. Todos los sprites son fan art propio en pixel art.
 
 Proyecto de fans no oficial, sin fines de lucro, sin relación con Anthropic, Crypton Future Media,
-TWINDRILL, Cygames ni Kadokawa. Clawd y Claude pertenecen a Anthropic; Hatsune Miku a Crypton Future
-Media; Kasane Teto a TWINDRILL; Defoko (Uta Utane) a UTAU; Gold Ship y Agnes Tachyon (Uma Musume
-Pretty Derby) a Cygames; Megumin (KonoSuba) a Kadokawa. Si eres titular de alguno de estos derechos y
+TWINDRILL, Cygames, Kadokawa, Nintendo, Game Freak ni The Pokémon Company. Clawd y Claude pertenecen a
+Anthropic; Hatsune Miku a Crypton Future Media; Kasane Teto a TWINDRILL; Defoko (Uta Utane) a UTAU;
+Gold Ship y Agnes Tachyon (Uma Musume Pretty Derby) a Cygames; Megumin (KonoSuba) a Kadokawa; Mudkip
+(Pokémon) a Nintendo, Game Freak y The Pokémon Company. Si eres titular de alguno de estos derechos y
 quieres que se retire un personaje, abre un issue y lo atenderemos.
 
 El código está bajo licencia [MIT](LICENSE).

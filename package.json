@@ -39,7 +39,7 @@
       { "command": "clawdPet.play", "title": "Lanzar la pelota", "category": "Clawd", "icon": "$(play-circle)" },
       { "command": "clawdPet.spawn", "title": "Invocar compañero", "category": "Clawd", "icon": "$(add)" },
       { "command": "clawdPet.social", "title": "Jugar juntos", "category": "Clawd", "icon": "$(heart)" },
-      { "command": "clawdPet.special", "title": "Animación especial", "category": "Clawd", "icon": "$(sparkle)" },
+      { "command": "clawdPet.special", "title": "Animación especial (mascota seleccionada)", "category": "Clawd", "icon": "$(sparkle)" },
       { "command": "clawdPet.sleep", "title": "Mandar a dormir", "category": "Clawd" },
       { "command": "clawdPet.code", "title": "Ponerse a programar", "category": "Clawd" },
       { "command": "clawdPet.dance", "title": "Bailar", "category": "Clawd" },
