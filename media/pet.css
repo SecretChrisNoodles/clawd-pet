@@ -1,0 +1,101 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  color: var(--vscode-foreground);
+  font-family: var(--vscode-font-family);
+  font-size: 11px;
+  user-select: none;
+}
+
+#hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 8px;
+  padding: 4px 6px 0;
+}
+
+#hud.hidden {
+  display: none;
+}
+
+#stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 600;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.bar {
+  width: 32px;
+  height: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--vscode-input-background, rgba(128, 128, 128, 0.25));
+  outline: 1px solid var(--vscode-widget-border, transparent);
+}
+
+.bar > div {
+  height: 100%;
+  transition: width 0.4s;
+}
+
+.bar.hunger > div { background: #e3b341; }
+.bar.energy > div { background: #5b8def; }
+.bar.happy > div { background: #e5534b; }
+.bar.low > div { animation: pulse 1s infinite; }
+
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+
+#toolbar {
+  display: flex;
+  gap: 1px;
+}
+
+#toolbar button {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  padding: 3px 4px;
+}
+
+#toolbar button:hover {
+  background: var(--vscode-toolbar-hoverBackground, rgba(128, 128, 128, 0.2));
+}
+
+#stage {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-height: 90px;
+  cursor: pointer;
+}

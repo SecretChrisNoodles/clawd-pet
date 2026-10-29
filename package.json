@@ -1,0 +1,95 @@
+{
+  "name": "clawd-pet",
+  "displayName": "Clawd Pet",
+  "description": "Una mascota virtual inspirada en Clawd, la mascota de Claude Code, que vive en tu VS Code.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "pet",
+    "mascota",
+    "clawd",
+    "claude"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "clawdPet.view",
+          "name": "Clawd"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "clawdPet.feed", "title": "Dar una galleta", "category": "Clawd", "icon": "$(gift)" },
+      { "command": "clawdPet.play", "title": "Lanzar la pelota", "category": "Clawd", "icon": "$(play-circle)" },
+      { "command": "clawdPet.spawn", "title": "Invocar compañero", "category": "Clawd", "icon": "$(add)" },
+      { "command": "clawdPet.social", "title": "Jugar juntos", "category": "Clawd", "icon": "$(heart)" },
+      { "command": "clawdPet.sing", "title": "Cantar", "category": "Clawd" },
+      { "command": "clawdPet.sleep", "title": "Mandar a dormir", "category": "Clawd" },
+      { "command": "clawdPet.code", "title": "Ponerse a programar", "category": "Clawd" },
+      { "command": "clawdPet.dance", "title": "Bailar", "category": "Clawd" },
+      { "command": "clawdPet.wave", "title": "Saludar", "category": "Clawd" },
+      { "command": "clawdPet.remove", "title": "Despedir a un Clawd", "category": "Clawd" },
+      { "command": "clawdPet.background", "title": "Cambiar fondo", "category": "Clawd" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "clawdPet.feed", "when": "view == clawdPet.view", "group": "navigation@1" },
+        { "command": "clawdPet.play", "when": "view == clawdPet.view", "group": "navigation@2" },
+        { "command": "clawdPet.social", "when": "view == clawdPet.view", "group": "navigation@3" },
+        { "command": "clawdPet.spawn", "when": "view == clawdPet.view", "group": "navigation@4" },
+        { "command": "clawdPet.sing", "when": "view == clawdPet.view", "group": "actions@5" },
+        { "command": "clawdPet.sleep", "when": "view == clawdPet.view", "group": "actions@1" },
+        { "command": "clawdPet.code", "when": "view == clawdPet.view", "group": "actions@2" },
+        { "command": "clawdPet.dance", "when": "view == clawdPet.view", "group": "actions@3" },
+        { "command": "clawdPet.wave", "when": "view == clawdPet.view", "group": "actions@4" },
+        { "command": "clawdPet.background", "when": "view == clawdPet.view", "group": "settings@1" },
+        { "command": "clawdPet.remove", "when": "view == clawdPet.view", "group": "settings@2" }
+      ]
+    },
+    "configuration": {
+      "title": "Clawd Pet",
+      "properties": {
+        "clawdPet.size": {
+          "type": "string",
+          "enum": ["small", "medium", "large"],
+          "enumDescriptions": ["Pequeño", "Mediano", "Grande"],
+          "default": "medium",
+          "description": "Tamaño de los Clawds."
+        },
+        "clawdPet.background": {
+          "type": "string",
+          "enum": ["none", "night", "beach", "grass", "terminal"],
+          "enumDescriptions": ["Sin fondo (usa el tema de VS Code)", "Noche estrellada", "Playa", "Pradera", "Terminal"],
+          "default": "none",
+          "description": "Fondo de la ventana de Clawd."
+        },
+        "clawdPet.showToolbar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Mostrar la barra de estado y botones dentro de la ventana."
+        },
+        "clawdPet.speechBubbles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Clawd habla con globos de texto."
+        },
+        "clawdPet.reactToEditor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Clawd reacciona cuando guardas archivos, aparecen errores o escribes código."
+        }
+      }
+    }
+  }
+}
