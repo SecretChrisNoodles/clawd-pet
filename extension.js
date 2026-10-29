@@ -34,6 +34,11 @@ class ClawdViewProvider {
         case 'spawnRequest':
           vscode.commands.executeCommand('clawdPet.spawn');
           break;
+        case 'removeRequest':
+          pickPetToRemove(msg.pets, msg.selected).then((id) => {
+            if (id != null) this.post({ type: 'action', action: 'remove', id });
+          });
+          break;
       }
     });
 
@@ -74,9 +79,10 @@ class ClawdViewProvider {
       <button data-action="code" title="Programar">💻</button>
       <button data-action="dance" title="Bailar">🎵</button>
       <button data-action="wave" title="Saludar">👋</button>
-      <button data-action="sing" title="Cantar">🎤</button>
+      <button data-action="special" title="Animación especial (cada mascota hace la suya)">✨</button>
       <button data-action="social" title="Jugar juntos">🤝</button>
       <button data-action="spawn" title="Invocar un compañero">➕</button>
+      <button data-action="remove" title="Despedir a una mascota">🗑️</button>
     </div>
   </div>
   <canvas id="stage"></canvas>
@@ -94,6 +100,23 @@ function readConfig() {
     showToolbar: c.get('showToolbar', true),
     speechBubbles: c.get('speechBubbles', true),
   };
+}
+
+const SPECIES_ICONS = { clawd: '🦀', miku: '🎤', teto: '🥖', goldship: '⚓', tachyon: '🧪', defoko: '🍙', megumin: '💥' };
+
+async function pickPetToRemove(pets, selectedId) {
+  if (!pets.length) {
+    vscode.window.showInformationMessage('No hay mascotas. Invoca una con ➕');
+    return null;
+  }
+  const items = pets.map((p) => ({
+    label: `${SPECIES_ICONS[p.species] || '🐾'} ${p.name}`,
+    description: p.id === selectedId ? 'seleccionada' : '',
+    id: p.id,
+  }));
+  if (pets.length > 1) items.push({ label: '🗑️ Despedir a todas', id: 'all' });
+  const pick = await vscode.window.showQuickPick(items, { placeHolder: '¿A qué mascota quieres despedir?' });
+  return pick ? pick.id : null;
 }
 
 function makeNonce() {
@@ -133,7 +156,7 @@ function activate(context) {
     provider.post({ type: 'action', action, ...extra });
   };
 
-  for (const action of ['feed', 'play', 'sleep', 'code', 'dance', 'wave', 'sing', 'social', 'remove']) {
+  for (const action of ['feed', 'play', 'sleep', 'code', 'dance', 'wave', 'special', 'social', 'remove']) {
     context.subscriptions.push(vscode.commands.registerCommand(`clawdPet.${action}`, sendAction(action)));
   }
 
@@ -146,6 +169,7 @@ function activate(context) {
         { label: '⚓ Gold Ship', description: 'corre, vende yakisoba y reparte dropkicks', value: 'goldship', name: 'Gold Ship' },
         { label: '🧪 Agnes Tachyon', description: 'prepara pócimas y experimenta con los demás', value: 'tachyon', name: 'Tachyon' },
         { label: '🍙 Defoko (Uta Utane)', description: 'la voz por defecto de UTAU: canta "あ"', value: 'defoko', name: 'Defoko' },
+        { label: '💥 Megumin', description: 'archimaga carmesí: ¡EXPLOSIÓN!', value: 'megumin', name: 'Megumin' },
       ];
       const character = await vscode.window.showQuickPick(characters, { placeHolder: '¿A quién quieres invocar?' });
       if (!character) return;
@@ -165,6 +189,7 @@ function activate(context) {
         { label: '🟣 Morado', value: 'purple' },
         { label: '🟡 Dorado', value: 'gold' },
         { label: '⚪ Fantasma', value: 'ghost' },
+        { label: '⚫ Negro', description: 'ojos amarillos', value: 'black' },
       ];
       const color = await vscode.window.showQuickPick(colors, { placeHolder: 'Elige el color de tu nuevo Clawd' });
       if (!color) return;

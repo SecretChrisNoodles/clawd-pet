@@ -34,12 +34,12 @@
       { "command": "clawdPet.play", "title": "Lanzar la pelota", "category": "Clawd", "icon": "$(play-circle)" },
       { "command": "clawdPet.spawn", "title": "Invocar compañero", "category": "Clawd", "icon": "$(add)" },
       { "command": "clawdPet.social", "title": "Jugar juntos", "category": "Clawd", "icon": "$(heart)" },
-      { "command": "clawdPet.sing", "title": "Cantar", "category": "Clawd" },
+      { "command": "clawdPet.special", "title": "Animación especial", "category": "Clawd", "icon": "$(sparkle)" },
       { "command": "clawdPet.sleep", "title": "Mandar a dormir", "category": "Clawd" },
       { "command": "clawdPet.code", "title": "Ponerse a programar", "category": "Clawd" },
       { "command": "clawdPet.dance", "title": "Bailar", "category": "Clawd" },
       { "command": "clawdPet.wave", "title": "Saludar", "category": "Clawd" },
-      { "command": "clawdPet.remove", "title": "Despedir a un Clawd", "category": "Clawd" },
+      { "command": "clawdPet.remove", "title": "Despedir a una mascota", "category": "Clawd" },
       { "command": "clawdPet.background", "title": "Cambiar fondo", "category": "Clawd" }
     ],
     "menus": {
@@ -48,7 +48,7 @@
         { "command": "clawdPet.play", "when": "view == clawdPet.view", "group": "navigation@2" },
         { "command": "clawdPet.social", "when": "view == clawdPet.view", "group": "navigation@3" },
         { "command": "clawdPet.spawn", "when": "view == clawdPet.view", "group": "navigation@4" },
-        { "command": "clawdPet.sing", "when": "view == clawdPet.view", "group": "actions@5" },
+        { "command": "clawdPet.special", "when": "view == clawdPet.view", "group": "actions@5" },
         { "command": "clawdPet.sleep", "when": "view == clawdPet.view", "group": "actions@1" },
         { "command": "clawdPet.code", "when": "view == clawdPet.view", "group": "actions@2" },
         { "command": "clawdPet.dance", "when": "view == clawdPet.view", "group": "actions@3" },
