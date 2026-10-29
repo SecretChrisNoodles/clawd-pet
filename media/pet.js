@@ -19,6 +19,7 @@
     purple: { body: '#9B7BE0', shade: '#7F60C4' },
     gold: { body: '#E3B341', shade: '#C4962B' },
     ghost: { body: '#E6E6E6', shade: '#C2C2C2' },
+    black: { body: '#3A3A44', shade: '#26262E', eye: '#F5D547' },
   };
   const EYE = '#1E1E1E';
   const BLUSH = '#FF9C9C';
@@ -74,6 +75,17 @@
         tie: '#8A4FD1', collar: '#26222E', sleeve: '#26222E', shoulder: '#FFE3D3', cuff: '#B79AE6',
         skirt: '#26222E', trim: '#8A4FD1', boot: '#26222E',
         beret: '#26222E', beretText: '#D8D8DE', phones: '#C9CDD6', phonesLight: '#5BD3F0',
+      },
+    },
+    // Archimaga carmesí: su solo es ¡EXPLOSIÓN!, tras la que se desmaya sin maná
+    megumin: {
+      w: 18, h: 23, crown: 4, legs: 5, unit: () => Math.max(2, Math.round(S * 0.75)), draw: drawChibi, name: 'Megumin',
+      food: 'potion', tails: 'short', solo: 'explode',
+      look: {
+        hair: '#3B2A22', hairDark: '#24170F', eye: '#D62B2B', skin: '#FFE3D3', shirt: '#C8323C',
+        tie: '#E8B04A', sleeve: '#C8323C', skirt: '#C8323C', trim: '#E8902A', boot: '#E06A2A', hand: '#26262E',
+        leg: '#26262E', legAlt: '#F2F2E8', belt: '#1E1E1E', cape: '#3B2A2A', capeTrim: '#E8902A',
+        witchHat: '#4A3530', witchBand: '#E8902A', witchBuckle: '#D63A3A', staff: '#6B4A2B',
       },
     },
   };
@@ -155,6 +167,25 @@
       concert: ['¡Concierto UTAU! 🎤', 'あ あ あ~ ¡a bailar!'],
       hug: ['¡Abrazo! 💜'],
     },
+    megumin: {
+      idle: [
+        '¡Mi nombre es Megumin!', 'Archimaga de los Demonios Carmesí 🔥', 'Solo sé un hechizo... ¡el mejor!',
+        '¿Una explosión? ¿Ahora? ¿Sí? 💥', 'Una explosión al día...', '¿Dónde se metió Chomusuke? 🐈‍⬛',
+        'La magia de explosión es arte', '¡No soy una niña!',
+      ],
+      hungry: ['Tengo hambre... ¿me invitas?', 'Los magos también comen 🥺', 'Sin comida no hay explosión'],
+      tired: ['Sin maná... 😵', 'Necesito descansar para explotar mañana'],
+      yum: ['¡Maná recargado! ✨', '¡Lista para otra explosión! 💥'],
+      hello: ['¡Mi nombre es Megumin! 💥', '¡Archimaga carmesí, presente! 🔥'],
+      pet: ['¡N-no me trates como niña! 😳', '...bueno, un poquito más', '¡Jeje! 💕'],
+      hug: ['¡Abrazo carmesí! ❤️'],
+      chant: [
+        'Oscuridad más negra que la noche...', 'Que el poder carmesí despierte...',
+        'Fuego ancestral, responde a mi llamado...',
+      ],
+      drained: ['...no me queda maná 😵', '¿Alguien me carga? 🥺', 'No puedo moverme...'],
+      recovered: ['¡Valió la pena! 💥', '¡Qué explosión tan perfecta!', '¿Le pongo nota? ¡100 puntos!'],
+    },
   };
 
   // Diálogos: [especie que habla, texto]. En "same" se usa el índice del participante.
@@ -226,10 +257,42 @@
       [['tachyon', 'Una voz sintetizada... fascinante 🧪'], ['defoko', '¿Me vas a analizar?'], ['tachyon', 'Solo un poquito. Kukuku...']],
       [['defoko', '¿Qué hay en ese frasco?'], ['tachyon', 'Algo que mejora la voz'], ['defoko', 'あ... ¿seguro? 😰']],
     ],
+    'clawd+megumin': [
+      [['megumin', '¡Un cangrejo! ¿Se come? 🤤'], ['clawd', '¡NO! 🦀'], ['megumin', 'Qué lástima...']],
+      [['clawd', '¿Sabes otros hechizos?'], ['megumin', '¡Solo Explosión!'], ['clawd', '...ok']],
+      [['megumin', '¿Me cargarás si me desmayo?'], ['clawd', '¿Por qué te desmayarías?'], ['megumin', 'Ya verás 😏']],
+    ],
+    'megumin+miku': [
+      [['miku', '¿Cantamos? 🎤'], ['megumin', '¡Solo si termina en explosión!'], ['miku', '¡Un final explosivo! 💥']],
+      [['megumin', 'Ese puerro... ¿es un báculo?'], ['miku', '¡Es un puerro! 🥬'], ['megumin', 'Igual lo respeto']],
+    ],
+    'megumin+teto': [
+      [['megumin', 'Tus coletas parecen taladros'], ['teto', '¡Son taladros! 🌀'], ['megumin', 'Respeto 😤']],
+      [['teto', '¡Teto Territory!'], ['megumin', '¡Explosión!'], ['teto', '¡Empate! ✌️']],
+    ],
+    'goldship+megumin': [
+      [['goldship', '¿Explosión? ¡Yo también sé!'], ['megumin', '¿Ah, sí?'], ['goldship', '¡Golshi Kick! 🦵']],
+      [['megumin', '¿Eres un barco o un caballo?'], ['goldship', 'Sí'], ['megumin', '...me caes bien 😤']],
+    ],
+    'megumin+tachyon': [
+      [['tachyon', 'Tu maná... ¿puedo medirlo? 🧪'], ['megumin', '¡Solo si me das una poción!'], ['tachyon', 'Kukuku... trato hecho']],
+      [['megumin', 'Tus pócimas explotan'], ['tachyon', 'A veces'], ['megumin', '¡Eres de las mías! 💥']],
+    ],
+    'defoko+megumin': [
+      [['defoko', 'あ'], ['megumin', '¡EXPLOSIÓN!'], ['defoko', 'あ... 😨']],
+      [['megumin', '¿Solo sabes una palabra?'], ['defoko', 'あ'], ['megumin', 'Yo solo sé un hechizo. Te entiendo']],
+    ],
     same: [
       [[0, '¿Viste ese bug?'], [1, 'Sí... da miedo 😨'], [0, '¡Arreglémoslo juntos!']],
       [[0, '¡Hola, gemelo!'], [1, '¡Hola, gemelo!'], [0, '...']],
       [[0, '¿Jugamos?'], [1, '¡Sí! ⚽']],
+    ],
+    // Para parejas sin diálogos propios
+    any: [
+      [[0, '¡Hola! ¿Cómo estás?'], [1, '¡Muy bien! ¿Y tú?'], [0, '¡Programando! 💻']],
+      [[0, '¿Jugamos?'], [1, '¡Sí! ⚽']],
+      [[0, '¿Tienes hambre?'], [1, 'Siempre 😋'], [0, '¡Igual yo!']],
+      [[0, '¿Viste ese bug?'], [1, 'Sí... da miedo 😨'], [0, '¡Arreglémoslo juntos!']],
     ],
   };
 
@@ -240,6 +303,7 @@
     yakisoba: { rows: ['..nnnnn..', '.nNnnrNn.', 'nnnNnnnNn', 'ppppppppp', '.ppppppp.'], colors: { n: '#C8843A', N: '#8A5424', r: '#E5534B', p: '#EDEDED' } },
     carrot: { rows: ['g.g.......', '.gooooooo.', 'gooOoooOoo', '.ooooooo..'], colors: { o: '#F28C28', O: '#C96A12', g: '#5FB84A' } },
     onigiri: { rows: ['...ww...', '..wwww..', '.wwwwww.', 'wwnnnnww', 'wwnnnnww'], colors: { w: '#F5F5F0', n: '#2E3B2E' } },
+    potion: { rows: ['.cc.', '.gg.', 'bbbb', 'bBbb', 'bbbb', '.bb.'], colors: { b: '#5B8DEF', B: '#A5E4FF', g: '#C9D6E3', c: '#8B5A2B' } },
   };
   const HEART = ['.x.x.', 'xxxxx', '.xxx.', '..x..'];
   const STARS = Array.from({ length: 50 }, () => ({ x: Math.random(), y: Math.random() * 0.85, p: Math.random() * 6 }));
@@ -277,6 +341,8 @@
   let selected = null;
   let drag = null;
   let socialT = rand(8, 15);
+  let shake = 0;
+  let nextId = 1;
 
   function readTheme() {
     const cs = getComputedStyle(document.body);
@@ -374,6 +440,30 @@
         const s = Math.max(2, Math.round(S * 0.5));
         ctx.fillStyle = q.color;
         ctx.fillRect(Math.round(q.x), Math.round(q.y - s), s, s);
+      } else if (q.kind === 'boom') {
+        // Cúpula de fuego que crece desde el suelo
+        const r = 12 + (q.age / q.life) * 60;
+        for (const [c, f] of [['#FF6A2A', 1], ['#FFD65C', 0.65], ['#FFFFFF', 0.3]]) {
+          ctx.fillStyle = c;
+          ctx.beginPath();
+          ctx.arc(q.x, q.y, r * f, Math.PI, 0);
+          ctx.fill();
+        }
+      } else if (q.kind === 'ring') {
+        // Círculo mágico en el suelo
+        const k = Math.min(1, q.age / 0.5);
+        ctx.globalAlpha = 0.9;
+        ctx.strokeStyle = '#E5534B';
+        ctx.lineWidth = 2;
+        for (const [rx, ry] of [[28, 6], [18, 4]]) {
+          ctx.beginPath();
+          ctx.ellipse(q.x, q.y, rx * k, ry * k, 0, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+      } else if (q.kind === 'smoke') {
+        const s = Math.round(S * (1.5 + (q.age / q.life) * 2));
+        ctx.fillStyle = '#8B8F96';
+        ctx.fillRect(Math.round(q.x - s / 2), Math.round(q.y - s / 2), s, s);
       } else {
         const size = (q.size || 10) + (q.grow ? (q.age / q.life) * 6 : 0);
         ctx.font = `bold ${Math.round(size)}px monospace`;
@@ -394,6 +484,7 @@
 
   class Pet {
     constructor(o = {}) {
+      this.id = nextId++;
       this.species = SPECIES[o.species] ? o.species : 'clawd';
       this.sp = SPECIES[this.species];
       this.name = o.name || defaultName(this.species);
@@ -421,7 +512,7 @@
     top() { return this.y - this.height() + this.pose.bob; }
 
     resetPose() {
-      this.pose = { eyes: 'open', armB: 'mid', armF: 'mid', legs: 0, bob: 0, mouth: false, look: 0, blush: false, prop: null, propFrame: 0, tilt: 0 };
+      this.pose = { eyes: 'open', armB: 'mid', armF: 'mid', legs: 0, bob: 0, mouth: false, look: 0, blush: false, prop: null, propFrame: 0, tilt: 0, lie: false };
     }
 
     grounded() {
@@ -857,6 +948,53 @@
       },
     },
 
+    // Megumin: conjura, lanza ¡EXPLOSIÓN! y se desmaya sin maná
+    explode: {
+      enter(p) {
+        p.dir = p.x < W / 2 ? 1 : -1;
+        p.data.tx = clamp(p.x + p.dir * rand(60, Math.max(70, W * 0.4)), 20, Math.max(20, W - 20));
+        p.data.sp = 0;
+        p.say(phr(p, 'chant'), 2.3);
+        spawn('ring', p.data.tx, groundY, { vx: 0, vy: 0, life: 2.4 });
+      },
+      update(p, dt) {
+        const d = p.data;
+        if (p.t < 2.4) {
+          p.pose.armF = p.pose.armB = 'up';
+          p.pose.eyes = p.t < 1.2 ? 'closed' : 'big';
+          if ((d.sp -= dt) <= 0) {
+            d.sp = 0.12;
+            spawn('spark', d.tx + rand(-25, 25), groundY - 2, { vx: 0, vy: -rand(80, 140), life: 0.6, color: pick(['#E5534B', '#FF9C5B', '#FFD65C']) });
+          }
+          return;
+        }
+        if (!d.boom) {
+          d.boom = true;
+          p.say('¡EXPLOSIÓN! 💥', 2.5);
+          explosion(d.tx);
+        }
+        if (p.t < 3.4) {
+          p.pose.armF = 'up';
+          p.pose.eyes = 'happy';
+          p.pose.mouth = true;
+          return;
+        }
+        if (!d.down) {
+          d.down = true;
+          p.boost('energy', -50);
+          p.boost('happy', 15);
+          p.say(phr(p, 'drained'), 3);
+        }
+        p.pose.lie = true;
+        p.pose.eyes = 'closed';
+        p.pose.armB = p.pose.armF = 'low';
+        if (p.t > 9) {
+          p.say(phr(p, 'recovered'));
+          p.setState('idle');
+        }
+      },
+    },
+
     // Controlado por una Interaction (ver más abajo)
     social: { update() {} },
   };
@@ -930,7 +1068,9 @@
 
   function pickDialogue([a, b]) {
     const set = DIALOGUES[[a.species, b.species].sort().join('+')];
-    if (a.species === b.species || !set) return pick(DIALOGUES.same).map(([i, t]) => [i ? b : a, t]);
+    if (a.species === b.species || !set) {
+      return pick(a.species === b.species ? DIALOGUES.same : DIALOGUES.any).map(([i, t]) => [i ? b : a, t]);
+    }
     return pick(set).map(([sp, t]) => [a.species === sp ? a : b, t]);
   }
 
@@ -1326,6 +1466,7 @@
   // Mascota de Claude Code: sprite de 14x9 unidades
   function drawClawd(p) {
     const pal = PALETTES[p.color];
+    const eye = pal.eye || EYE;
     const po = p.pose;
     const s = p.u();
     const ox = Math.round(p.x - 7 * s);
@@ -1357,18 +1498,18 @@
     eyes.forEach((ex, i) => {
       switch (po.eyes) {
         case 'closed':
-          px(ex - i, 3, 2, 1, EYE);
+          px(ex - i, 3, 2, 1, eye);
           break;
         case 'happy':
-          px(ex - 1, 3, 1, 1, EYE);
-          px(ex, 2, 1, 1, EYE);
-          px(ex + 1, 3, 1, 1, EYE);
+          px(ex - 1, 3, 1, 1, eye);
+          px(ex, 2, 1, 1, eye);
+          px(ex + 1, 3, 1, 1, eye);
           break;
         case 'big':
-          px(ex, 1, 1, 3, EYE);
+          px(ex, 1, 1, 3, eye);
           break;
         default:
-          px(ex, 2, 1, 2, EYE);
+          px(ex, 2, 1, 2, eye);
       }
     });
 
@@ -1376,10 +1517,10 @@
       px(eyes[0] - 1, 4, 1, 1, BLUSH);
       px(eyes[1] + 1, 4, 1, 1, BLUSH);
     }
-    if (po.mouth) px(6 + po.look, 5, 2, 1, EYE);
+    if (po.mouth) px(6 + po.look, 5, 2, 1, eye);
   }
 
-  // Chibi de 18x19 unidades: coletas (Miku), taladros (Teto) o umamusume con orejas y cola
+  // Chibi de 18x19 unidades: coletas (Miku), taladros (Teto), umamusume con orejas y cola o bruja (Megumin)
   function drawChibi(p) {
     const sp = p.sp;
     const L = sp.look;
@@ -1399,6 +1540,12 @@
     const hand = L.hand || L.skin;
     // mirror(side) devuelve X(), que refleja las coordenadas para el lado derecho
     const mirror = (side) => (x, ww) => (side < 0 ? x : w - x - ww);
+
+    // Capa por detrás de todo (Megumin)
+    if (L.cape) {
+      px(2, 8, 14, 8, L.cape);
+      px(2, 15, 14, 1, L.capeTrim);
+    }
 
     // Cola de caballo, en la espalda (a la izquierda del sprite sin voltear)
     if (sp.uma) {
@@ -1448,7 +1595,8 @@
     if (po.legs !== 'sit') {
       [6, 10].forEach((lx, i) => {
         const lift = (po.legs === 1 && i === 0) || (po.legs === 2 && i === 1) ? 1 : 0;
-        px(lx, 14, 2, 2 - lift, L.skin);
+        // leg: medias; legAlt: la pierna de atrás distinta (venda de Megumin)
+        px(lx, 14, 2, 2 - lift, (i === 0 && L.legAlt) || L.leg || L.skin);
         px(lx, 16 - lift, 2, 3, L.boot);
         px(lx, 16 - lift, 2, 1, L.trim);
       });
@@ -1463,6 +1611,10 @@
       px(10, 8, 1, 1, L.collar);
     }
     px(8, 8, 2, 3, L.tie);
+    if (L.belt) {
+      px(5, 11, 8, 1, L.belt);
+      px(8, 11, 2, 1, '#C9CED6');
+    }
 
     // Bata de laboratorio abierta (Tachyon)
     if (L.coat) {
@@ -1498,6 +1650,18 @@
     if (L.hat) {
       px(7, -2, 4, 2, L.hat);
       px(6, 0, 6, 1, L.hatBand);
+    }
+    // Sombrero de bruja con la punta doblada hacia atrás (Megumin)
+    if (L.witchHat) {
+      px(5, -1, 8, 3, L.witchHat);
+      px(6, -2, 5, 1, L.witchHat);
+      px(6, -3, 3, 1, L.witchHat);
+      px(4, -4, 3, 1, L.witchHat);
+      px(5, 1, 8, 1, L.witchBand);
+      px(8, 1, 2, 1, L.witchBuckle);
+      px(2, 2, 14, 1, L.witchHat);
+      px(2, 2, 1, 1, L.witchBand);
+      px(15, 2, 1, 1, L.witchBand);
     }
     // Boina con "UTAU" y audífonos (Defoko)
     if (L.beret) {
@@ -1565,6 +1729,16 @@
     arm(false, po.armB);
     arm(true, po.armF);
 
+    // Báculo con esfera azul, siempre en la mano delantera (Megumin)
+    if (L.staff) {
+      const [hx, hy] = po.armF === 'up' ? [14, 4] : po.armF === 'low' ? [13, 11] : [12, 11];
+      px(hx, hy - 6, 1, 12, L.staff);
+      px(hx + 1, hy - 9, 1, 3, L.staff);
+      px(hx - 1, hy - 8, 2, 2, '#3A6FD8');
+      px(hx - 1, hy - 8, 1, 1, '#A5E4FF');
+      px(hx, hy, 1, 1, hand);
+    }
+
     // Objeto en la mano delantera levantada (x=14, y=4)
     if (po.prop === 'leek') {
       if (po.propFrame) {
@@ -1600,11 +1774,17 @@
   }
 
   // tilt: giro del cuerpo (dropkick); glow: brillo arcoíris de las pócimas de Tachyon
+  // lie: tumbada en el suelo (Megumin sin maná)
   function drawPet(p) {
-    if (!p.pose.tilt && !(p.glow > 0)) return p.sp.draw(p);
+    if (!p.pose.tilt && !p.pose.lie && !(p.glow > 0)) return p.sp.draw(p);
     ctx.save();
     if (p.glow > 0) ctx.filter = `hue-rotate(${Math.round(clock * 240) % 360}deg) drop-shadow(0 0 3px #9DFF7A)`;
-    if (p.pose.tilt) {
+    if (p.pose.lie) {
+      // Se gira 90° hacia donde mira y queda apoyada en el suelo
+      ctx.translate(Math.round(p.x), Math.round(groundY - p.halfW()));
+      ctx.rotate((p.dir * Math.PI) / 2);
+      ctx.translate(-Math.round(p.x), -Math.round(p.y - p.height() / 2));
+    } else if (p.pose.tilt) {
       const cy = p.y - p.height() / 2 + p.pose.bob;
       ctx.translate(p.x, cy);
       ctx.rotate(p.pose.tilt);
@@ -1820,7 +2000,27 @@
   function throwBall(x) {
     ball = { x: clamp(x, 10, W - 10), y: -10, vx: rand(-40, 40), vy: 0, r: 2.5 * S, life: 25, rot: 0 };
     for (const p of pets) {
-      if (p.grounded() && !['sleep', 'eat', 'chase', 'social'].includes(p.state)) p.setState('chase');
+      if (p.grounded() && !['sleep', 'eat', 'chase', 'social', 'explode'].includes(p.state)) p.setState('chase');
+    }
+  }
+
+  // Fuego, humo, temblor y las mascotas cercanas salen volando
+  function explosion(x) {
+    spawn('boom', x, groundY, { vx: 0, vy: 0, life: 1.1 });
+    for (let i = 0; i < 30; i++) {
+      spawn('spark', x, groundY - 10, { vx: rand(-160, 160), vy: rand(-260, -60), life: rand(0.8, 1.5), color: pick(['#E5534B', '#FF9C5B', '#FFD65C', '#FFFFFF']) });
+    }
+    for (let i = 0; i < 6; i++) {
+      spawn('smoke', x + rand(-20, 20), groundY - rand(0, 20), { vx: rand(-10, 10), vy: rand(-25, -12), life: rand(1.5, 2.5) });
+    }
+    shake = 0.7;
+    for (const q of pets) {
+      const d = q.x - x;
+      if (Math.abs(d) > 90 || !q.grounded() || ['sleep', 'social', 'explode'].includes(q.state)) continue;
+      q.vx = (Math.sign(d) || 1) * rand(120, 220);
+      q.vy = -rand(200, 300);
+      q.setState('fall');
+      q.say(pick(PHRASES.thrown), 2);
     }
   }
 
@@ -1845,7 +2045,7 @@
       p.say(pick(PHRASES.grumpy));
       return;
     }
-    p.say(pick(PHRASES.pet), 1.8);
+    p.say(phr(p, 'pet'), 1.8);
     if (p.grounded() && p.state !== 'social') p.setState('jump', { blush: true, small: true });
   }
 
@@ -1858,17 +2058,28 @@
     return p;
   }
 
-  function removePet() {
-    if (pets.length <= 1) {
-      pets[0] && pets[0].say('¡Yo me quedo! 🦀');
-      return;
+  // La extensión muestra la lista y responde con la acción 'remove' y el id elegido ('all' = todas)
+  function requestRemove() {
+    vscode.postMessage({
+      type: 'removeRequest',
+      selected: selected && selected.id,
+      pets: pets.map((p) => ({ id: p.id, name: p.name, species: p.species })),
+    });
+  }
+
+  function removePet(id) {
+    const gone = id === 'all' ? pets.slice() : pets.filter((p) => p.id === id);
+    for (const p of gone) {
+      sparkles(p.x, p.top() + p.height() / 2, 10);
+      pets.splice(pets.indexOf(p), 1);
     }
-    const p = selected && pets.includes(selected) ? selected : pets[pets.length - 1];
-    sparkles(p.x, p.top() + p.height() / 2, 10);
-    pets.splice(pets.indexOf(p), 1);
-    selected = pets[0];
+    if (!pets.includes(selected)) selected = pets[0] || null;
+    renderHud();
     save();
   }
+
+  // ✨: su solo si tiene (zoom, brew, explode...), si no canta o baila
+  const specialOf = (p) => p.sp.solo || (p.sp.singer ? 'sing' : 'dance');
 
   function forEachPet(fn) {
     pets.forEach((p, i) => setTimeout(() => {
@@ -1885,8 +2096,12 @@
       case 'code':
       case 'dance':
       case 'wave': return forEachPet((p) => p.grounded() && p.setState(msg.action));
-      case 'sing': return forEachPet((p) => p.grounded() && p.setState(p.sp.singer ? 'sing' : 'dance'));      case 'spawn': return addPet({ species: msg.species, color: msg.color, name: msg.name });
-      case 'remove': return removePet();
+      case 'special':
+        return forEachPet((p) => {
+          if (p.grounded() && p.state !== specialOf(p)) p.setState(specialOf(p));
+        });
+      case 'spawn': return addPet({ species: msg.species, color: msg.color, name: msg.name });
+      case 'remove': return msg.id != null ? removePet(msg.id) : requestRemove();
     }
   }
 
@@ -1923,7 +2138,7 @@
     if (!p) { statsEl.innerHTML = ''; return; }
     const bar = (icon, v, cls, label) =>
       `<span class="stat" title="${label}: ${Math.round(v)}%">${icon}<span class="bar ${cls}${v < 25 ? ' low' : ''}"><div style="width:${v.toFixed(0)}%"></div></span></span>`;
-    const foodIcon = { cookie: '🍪', leek: '🥬', bread: '🥖', yakisoba: '🍜', carrot: '🥕', onigiri: '🍙' }[p.sp.food];
+    const foodIcon = { cookie: '🍪', leek: '🥬', bread: '🥖', yakisoba: '🍜', carrot: '🥕', onigiri: '🍙', potion: '🧪' }[p.sp.food];
     statsEl.innerHTML =
       `<span class="name" title="${esc(p.name)}">${esc(p.name)}</span>` +
       bar(foodIcon, p.hunger, 'hunger', 'Comida') +
@@ -1957,7 +2172,8 @@
         happy: clamp(s.happy - elapsed / 180, 10, 100),
       }));
     }
-    if (!pets.length) pets.push(new Pet({ name: 'Clawd', color: 'orange' }));
+    // Solo la primera vez (sin estado guardado) aparece Clawd; si las despidieron a todas, sigue vacío
+    if (!state) pets.push(new Pet({ name: 'Clawd', color: 'orange' }));
     selected = pets[0];
     setTimeout(() => pets[0] && pets[0].say(phr(pets[0], 'hello')), 900);
   }
@@ -2078,6 +2294,11 @@
 
     const order = drawOrder();
     ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    if (shake > 0) {
+      shake -= dt;
+      ctx.translate(Math.round(rand(-3, 3)), Math.round(rand(-2, 2)));
+    }
     drawBackground(clock);
     foods.forEach(drawFood);
     pets.forEach((p) => p.state === 'code' && drawLaptop(p));
@@ -2086,6 +2307,15 @@
     drawBall();
     drawParticles();
     order.forEach((p) => p.bubble && drawBubble(p));
+    if (!pets.length) {
+      ctx.font = `12px ${theme.font}`;
+      ctx.textAlign = 'center';
+      ctx.fillStyle = textColor();
+      ctx.globalAlpha = 0.7;
+      ctx.fillText('Invoca una mascota con ➕', W / 2, H / 2);
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
 
     requestAnimationFrame(frame);
   }
